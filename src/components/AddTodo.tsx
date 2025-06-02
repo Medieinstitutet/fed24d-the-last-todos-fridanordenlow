@@ -2,10 +2,10 @@ import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { Todo } from '../models/Todo';
 
 type AddTodoProps = {
-  addNewTodo: (todo: Todo) => void;
+  addTodo: (todo: Todo) => void;
 };
 
-export const AddTodo = ({ addNewTodo }: AddTodoProps) => {
+export const AddTodo = ({ addTodo }: AddTodoProps) => {
   const [todo, setTodo] = useState<Todo>(new Todo(''));
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +15,7 @@ export const AddTodo = ({ addNewTodo }: AddTodoProps) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    addNewTodo(todo);
+    addTodo(todo);
     setTodo(new Todo(''));
   };
 

@@ -1,7 +1,7 @@
 export class Todo {
   id: number = 0;
   description: string = '';
-  isDone: boolean = false;
+  isCompleted: boolean = false;
   createdAt: string = '';
 
   constructor(description: string) {

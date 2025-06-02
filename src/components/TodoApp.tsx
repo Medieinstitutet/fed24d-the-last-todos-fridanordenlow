@@ -23,8 +23,12 @@ export const TodoApp = () => {
     setTodos(todos.filter((t) => t.id !== id));
   };
 
-  const toggleIsTodoDone = (id: number) => {
-    setTodos(todos.map((t) => (t.id === id ? { ...t, isDone: !t.isDone } : t)));
+  const toggleCompleted = (id: number) => {
+    setTodos(
+      todos.map((t) =>
+        t.id === id ? { ...t, isCompleted: !t.isCompleted } : t
+      )
+    );
   };
 
   console.log('Todos', todos);
@@ -35,9 +39,9 @@ export const TodoApp = () => {
       <TodoList
         todoList={todos}
         onDelete={deleteTodo}
-        onToggle={toggleIsTodoDone}
+        onToggle={toggleCompleted}
       />
-      <AddTodo addNewTodo={addTodo} />
+      <AddTodo addTodo={addTodo} />
     </>
   );
 };
