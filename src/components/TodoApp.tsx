@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Todo } from '../models/Todo';
 import { TodoList } from './TodoList';
+import { AddTodo } from './AddTodo';
 
 export const TodoApp = () => {
   const [todos, setTodos] = useState<Todo[]>([
@@ -14,10 +15,9 @@ export const TodoApp = () => {
   // Ta bort -> filter todos.filter()
   // Ändra object i listan -> map todos.map
 
-  console.log('Todos', todos);
-  // const addTodo = (todo: Todo) => {
-  //   setTodos([...todos, todo]);
-  // };
+  const addTodo = (todo: Todo) => {
+    setTodos([...todos, todo]);
+  };
 
   const deleteTodo = (id: number) => {
     setTodos(todos.filter((t) => t.id !== id));
@@ -26,6 +26,9 @@ export const TodoApp = () => {
   const toggleIsTodoDone = (id: number) => {
     setTodos(todos.map((t) => (t.id === id ? { ...t, isDone: !t.isDone } : t)));
   };
+
+  console.log('Todos', todos);
+
   return (
     <>
       <h1>The Last Todos To Do</h1>
@@ -34,6 +37,7 @@ export const TodoApp = () => {
         onDelete={deleteTodo}
         onToggle={toggleIsTodoDone}
       />
+      <AddTodo addNewTodo={addTodo} />
     </>
   );
 };
