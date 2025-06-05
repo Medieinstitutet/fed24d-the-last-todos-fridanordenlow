@@ -2,35 +2,46 @@ import { useState } from 'react';
 import { Todo } from '../models/Todo';
 import { TodoList } from './TodoList';
 import { AddTodo } from './AddTodo';
+import {
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from '../utils/localStorage';
 
 export const TodoApp = () => {
-  const saveToLocalStorage = (todos: Todo[]) => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  };
+  // const saveToLocalStorage = (todos: Todo[]) => {
+  //   localStorage.setItem('todos', JSON.stringify(todos));
+  // };
 
-  const loadFromLocalStorage = (): Todo[] => {
-    const storedItems = localStorage.getItem('todos');
-    return storedItems
-      ? JSON.parse(storedItems)
-      : [
-          new Todo('Clean the balcony'),
-          new Todo('Plant the flowers'),
-          new Todo('Re-pot the cuttings'),
-        ];
-  };
+  // const loadFromLocalStorage = (): Todo[] => {
+  //   const storedItems = localStorage.getItem('todos');
+  //   return storedItems
+  //     ? JSON.parse(storedItems)
+  //     : [
+  //         new Todo('Clean the balcony'),
+  //         new Todo('Plant the flowers'),
+  //         new Todo('Re-pot the cuttings'),
+  //       ];
+  // };
 
-  const [todos, setTodos] = useState<Todo[]>(() => loadFromLocalStorage());
+  const [todos, setTodos] = useState<Todo[]>(
+    () =>
+      loadFromLocalStorage<Todo[]>('todos') ?? [
+        new Todo('Clean the balcony'),
+        new Todo('Plant the flowers'),
+        new Todo('Re-pot the cuttings'),
+      ]
+  );
 
   const addTodo = (todo: Todo) => {
     const updatedTodos = [...todos, todo];
     setTodos(updatedTodos);
-    saveToLocalStorage(updatedTodos);
+    saveToLocalStorage('todos', updatedTodos);
   };
 
   const deleteTodo = (id: number) => {
     const updatedTodos = todos.filter((t) => t.id !== id);
     setTodos(updatedTodos);
-    saveToLocalStorage(updatedTodos);
+    saveToLocalStorage('todos', updatedTodos);
   };
 
   const toggleCompleted = (id: number) => {
@@ -38,7 +49,7 @@ export const TodoApp = () => {
       t.id === id ? { ...t, isCompleted: !t.isCompleted } : t
     );
     setTodos(updatedTodos);
-    saveToLocalStorage(updatedTodos);
+    saveToLocalStorage('todos', updatedTodos);
   };
 
   console.log('Todos', todos);
