@@ -7,6 +7,7 @@ import {
   saveToLocalStorage,
 } from '../utils/localStorage';
 import { Box, Typography } from '@mui/material';
+import { SortTodos } from './SortTodos';
 
 export const TodoApp = () => {
   // const saveToLocalStorage = (todos: Todo[]) => {
@@ -53,6 +54,10 @@ export const TodoApp = () => {
     saveToLocalStorage('todos', updatedTodos);
   };
 
+  const sortTodos = (sorted: Todo[]) => {
+    setTodos(sorted);
+  };
+
   console.log('Todos', todos);
 
   return (
@@ -60,6 +65,7 @@ export const TodoApp = () => {
       <Typography variant="h3">The Last Todos To Do</Typography>
       <Box sx={{ maxWidth: 500, mx: 'auto', mt: 4 }}>
         <AddTodo addTodo={addTodo} />
+        <SortTodos todoList={todos} onSort={sortTodos} />
         <TodoList
           todoList={todos}
           onDelete={deleteTodo}
