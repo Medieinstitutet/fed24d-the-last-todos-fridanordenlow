@@ -44,7 +44,7 @@ export const AddTodo = ({ addTodo }: AddTodoProps) => {
           type="text"
           id="description"
           // value={description}
-          value={todo.description}
+          value={todo.description || ''}
           onChange={handleChange}
         ></input>
         <button>Add</button>
