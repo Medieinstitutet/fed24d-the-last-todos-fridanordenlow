@@ -6,6 +6,7 @@ import {
   loadFromLocalStorage,
   saveToLocalStorage,
 } from '../utils/localStorage';
+import { Box, Typography } from '@mui/material';
 
 export const TodoApp = () => {
   // const saveToLocalStorage = (todos: Todo[]) => {
@@ -56,13 +57,15 @@ export const TodoApp = () => {
 
   return (
     <>
-      <h1>The Last Todos To Do</h1>
-      <TodoList
-        todoList={todos}
-        onDelete={deleteTodo}
-        onToggle={toggleCompleted}
-      />
-      <AddTodo addTodo={addTodo} />
+      <Typography variant="h3">The Last Todos To Do</Typography>
+      <Box sx={{ maxWidth: 500, mx: 'auto', mt: 4 }}>
+        <AddTodo addTodo={addTodo} />
+        <TodoList
+          todoList={todos}
+          onDelete={deleteTodo}
+          onToggle={toggleCompleted}
+        />
+      </Box>
     </>
   );
 };

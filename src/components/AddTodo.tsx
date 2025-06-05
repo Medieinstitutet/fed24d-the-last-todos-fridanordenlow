@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { Todo } from '../models/Todo';
+import { Box, Button, Paper, TextField, Typography } from '@mui/material';
 
 type AddTodoProps = {
   addTodo: (todo: Todo) => void;
@@ -36,19 +37,28 @@ export const AddTodo = ({ addTodo }: AddTodoProps) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <h2>Add new todo</h2>
-        <label htmlFor="description">Description: </label>
-        <input
+    <Paper elevation={3} sx={{ p: 3, mb: 4, maxWidth: 500, margin: '0 auto' }}>
+      <Typography variant="h6" gutterBottom>
+        Add new todo
+      </Typography>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{ display: 'flex', gap: 2, alignItems: 'center' }}
+      >
+        <TextField
+          label="Description"
           type="text"
           id="description"
-          // value={description}
           value={todo.description || ''}
           onChange={handleChange}
-        ></input>
-        <button>Add</button>
-      </form>
-    </>
+          variant="outlined"
+          fullWidth
+        ></TextField>
+        <Button type="submit" variant="outlined">
+          Add
+        </Button>
+      </Box>
+    </Paper>
   );
 };
