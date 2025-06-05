@@ -4,31 +4,41 @@ import { TodoList } from './TodoList';
 import { AddTodo } from './AddTodo';
 
 export const TodoApp = () => {
-  const [todos, setTodos] = useState<Todo[]>([
-    new Todo('Clean the balcony'),
-    new Todo('Plant the flowers'),
-    new Todo('Re-pot the cuttings'),
-  ]);
+  const saveToLocalStorage = (todos: Todo[]) => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  };
 
-  // Listor i state
-  // Lägg till -> spread [...todos]
-  // Ta bort -> filter todos.filter()
-  // Ändra object i listan -> map todos.map
+  const loadFromLocalStorage = (): Todo[] => {
+    const storedItems = localStorage.getItem('todos');
+    return storedItems
+      ? JSON.parse(storedItems)
+      : [
+          new Todo('Clean the balcony'),
+          new Todo('Plant the flowers'),
+          new Todo('Re-pot the cuttings'),
+        ];
+  };
+
+  const [todos, setTodos] = useState<Todo[]>(() => loadFromLocalStorage());
 
   const addTodo = (todo: Todo) => {
-    setTodos([...todos, todo]);
+    const updatedTodos = [...todos, todo];
+    setTodos(updatedTodos);
+    saveToLocalStorage(updatedTodos);
   };
 
   const deleteTodo = (id: number) => {
-    setTodos(todos.filter((t) => t.id !== id));
+    const updatedTodos = todos.filter((t) => t.id !== id);
+    setTodos(updatedTodos);
+    saveToLocalStorage(updatedTodos);
   };
 
   const toggleCompleted = (id: number) => {
-    setTodos(
-      todos.map((t) =>
-        t.id === id ? { ...t, isCompleted: !t.isCompleted } : t
-      )
+    const updatedTodos = todos.map((t) =>
+      t.id === id ? { ...t, isCompleted: !t.isCompleted } : t
     );
+    setTodos(updatedTodos);
+    saveToLocalStorage(updatedTodos);
   };
 
   console.log('Todos', todos);
