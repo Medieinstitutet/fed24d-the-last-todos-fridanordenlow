@@ -7,30 +7,21 @@ type AddTodoProps = {
 };
 
 export const AddTodo = ({ addTodo }: AddTodoProps) => {
-  //   const [description, setDescription] = useState('');
-
-  //   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //     setDescription(e.target.value);
-  //   };
-
-  //   const handleSubmit = (e: FormEvent) => {
-  //     e.preventDefault();
-
-  //     const newTodo = new Todo(description);
-  //     addTodo(newTodo);
-  //     setDescription('');
-  //   };
-
-  // Ger felmeddelandet:
-  // hook.js:608 A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component.
   const [todo, setTodo] = useState<Todo>(new Todo(''));
+  const [error, setError] = useState<string>('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTodo({ ...todo, [e.target.id]: e.target.value });
+    if (error) setError('');
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (todo.description.trim() === '') {
+      setError('Please write a description');
+      // alert('Please write a description of your todo');
+      return;
+    }
 
     addTodo(todo);
     setTodo(new Todo(''));
@@ -53,7 +44,10 @@ export const AddTodo = ({ addTodo }: AddTodoProps) => {
           value={todo.description || ''}
           onChange={handleChange}
           variant="outlined"
+          size="small"
           fullWidth
+          error={!!error}
+          helperText={error}
         ></TextField>
         <Button type="submit" variant="outlined">
           Add
