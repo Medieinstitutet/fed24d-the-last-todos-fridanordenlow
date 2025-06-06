@@ -24,20 +24,24 @@ export const SortTodos = ({ todoList, onSort }: SortTodosProps) => {
     const sortedTodos = [...todoList];
 
     switch (value) {
-      case 'completed':
+      case 'alphabetical-a-z':
+        sortedTodos.sort((a, b) => a.description.localeCompare(b.description));
+        break;
+
+      case 'alphabetical-z-a':
+        sortedTodos.sort((a, b) => b.description.localeCompare(a.description));
+        break;
+
+      case 'done':
         sortedTodos.sort(
           (a, b) => Number(b.isCompleted) - Number(a.isCompleted)
         );
         break;
 
-      case 'incompleted':
+      case 'not-done':
         sortedTodos.sort(
           (a, b) => Number(a.isCompleted) - Number(b.isCompleted)
         );
-        break;
-
-      case 'alphabetical':
-        sortedTodos.sort((a, b) => a.description.localeCompare(b.description));
         break;
 
       case 'newest':
@@ -69,11 +73,12 @@ export const SortTodos = ({ todoList, onSort }: SortTodosProps) => {
           label="Sort by"
           onChange={handleChange}
         >
-          <MenuItem value="alphabetical">A–Z</MenuItem>
-          <MenuItem value="completed">Completed first</MenuItem>
-          <MenuItem value="incompleted">Incompleted first</MenuItem>
-          <MenuItem value="newest">Newest first</MenuItem>
-          <MenuItem value="oldest">Oldest first</MenuItem>
+          <MenuItem value="alphabetical-a-z">A–Z</MenuItem>
+          <MenuItem value="alphabetical-z-a">Z–A</MenuItem>
+          <MenuItem value="done">Done</MenuItem>
+          <MenuItem value="not-done">Not done</MenuItem>
+          <MenuItem value="newest">Newest</MenuItem>
+          <MenuItem value="oldest">Oldest</MenuItem>
         </Select>
       </FormControl>
     </Box>
