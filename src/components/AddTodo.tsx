@@ -30,14 +30,24 @@ export const AddTodo = ({ addTodo }: AddTodoProps) => {
   };
 
   return (
-    <Paper elevation={3} sx={{ p: 3, mb: 4, maxWidth: 500, margin: '0 auto' }}>
-      <Typography variant="h6" gutterBottom>
-        Add new todo
+    <Paper
+      elevation={3}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        p: 3,
+        mb: 4,
+        maxWidth: 500,
+        margin: '0 auto',
+      }}
+    >
+      <Typography variant="h6" sx={{ color: '#414e62' }} gutterBottom>
+        Add something new to do
       </Typography>
       <Box
         component="form"
         onSubmit={handleSubmit}
-        sx={{ display: 'flex', gap: 2, alignItems: 'center' }}
+        sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}
       >
         <TextField
           label="Description"

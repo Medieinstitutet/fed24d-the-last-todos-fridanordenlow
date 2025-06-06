@@ -14,7 +14,7 @@ export const TodoItem = ({ todoItem, onDelete, onToggle }: TodoItemProps) => {
       elevation={2}
       sx={{
         p: 2,
-        // mt: 2,
+        mt: 2,
         backgroundColor: todoItem.isCompleted ? '#e0e0e0' : '#ffffff',
         opacity: todoItem.isCompleted ? 0.6 : 1,
         transition: 'all 0.3s',
@@ -35,7 +35,7 @@ export const TodoItem = ({ todoItem, onDelete, onToggle }: TodoItemProps) => {
             cursor: 'pointer',
           }}
         >
-          <Checkbox checked={todoItem.isCompleted} />
+          <Checkbox checked={todoItem.isCompleted} color="default" />
           <Typography
             variant="body1"
             sx={{

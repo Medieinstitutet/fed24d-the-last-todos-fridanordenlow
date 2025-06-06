@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 import {
-  Box,
   FormControl,
   InputLabel,
   MenuItem,
+  Paper,
   Select,
   type SelectChangeEvent,
 } from '@mui/material';
@@ -65,7 +65,7 @@ export const SortTodos = ({ todoList, onSort }: SortTodosProps) => {
   };
 
   return (
-    <Box sx={{ minWidth: 120, mt: 2 }}>
+    <Paper sx={{ minWidth: 120, mt: 2 }}>
       <FormControl fullWidth>
         <InputLabel id="sorting-label">Sort by</InputLabel>
         <Select
@@ -83,6 +83,6 @@ export const SortTodos = ({ todoList, onSort }: SortTodosProps) => {
           <MenuItem value="oldest">Oldest</MenuItem>
         </Select>
       </FormControl>
-    </Box>
+    </Paper>
   );
 };

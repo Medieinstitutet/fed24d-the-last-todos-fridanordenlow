@@ -2,19 +2,21 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   typography: {
-    fontFamily: `'Roboto', 'Arial', sans-serif`, // Brödtext
+    fontFamily: `'Roboto', 'Arial', sans-serif`,
     h2: {
-      fontFamily: `'Merriweather', serif`, // Rubriker
+      fontFamily: `"Merriweather", serif`,
+      fontSize: '2.5rem',
+      //   fontStyle: 'italic',
       fontWeight: 700,
     },
     h6: {
       fontFamily: `'Merriweather', serif`,
+      fontSize: '1.2rem',
       fontWeight: 700,
     },
     button: {
       fontFamily: `'Roboto', sans-serif`,
       textTransform: 'none',
-      //   background: '#c1ccdb', funkar ej
     },
   },
   palette: {
@@ -34,32 +36,29 @@ const theme = createTheme({
           borderStyle: 'solid',
           textTransform: 'uppercase',
           fontWeight: 600,
-          padding: '6px 22px',
+          height: '40px',
+          padding: '20px',
           boxShadow: 'none',
           transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
           color: '#333',
         },
         containedPrimary: {
-          backgroundColor: '#d5e0db', // Din färg
-          color: '#2e3f38', // Mörk grågrön för kontrast
-          borderColor: '#a6beb3', // Mjukare, men tydlig border
-          borderWidth: '2px',
-          borderStyle: 'solid',
+          backgroundColor: '#d5dce6',
+          color: '#414e62',
+          border: 'none',
           '&:hover': {
-            backgroundColor: '#a6beb3', // Lite mörkare vid hover
-            borderColor: '#8fa99e',
+            backgroundColor: '#c0c9d9',
             boxShadow: 'none',
+            color: '#414e62',
           },
         },
         containedSecondary: {
-          backgroundColor: '#f5d7d7', // Ljus rosa-röd ton
-          color: '#8a1c1c', // Dov röd text
-          borderColor: '#e4b4b4', // Ljusröd border
-          borderWidth: '2px',
-          borderStyle: 'solid',
+          backgroundColor: '#f5c1aa',
+          color: '#723c26',
+          border: 'none',
           '&:hover': {
-            backgroundColor: '#e4b4b4',
-            borderColor: '#cc9999',
+            backgroundColor: '#ecb499',
+            color: '#5a2a17',
             boxShadow: 'none',
           },
         },

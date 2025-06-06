@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { Todo } from '../models/Todo';
 
@@ -12,6 +12,7 @@ import {
   loadFromLocalStorage,
   saveToLocalStorage,
 } from '../utils/localStorage';
+import Header from './Header';
 
 export const TodoApp = () => {
   // const saveToLocalStorage = (todos: Todo[]) => {
@@ -66,8 +67,14 @@ export const TodoApp = () => {
 
   return (
     <>
-      <Typography variant="h2">The Last Todos To Do</Typography>
-      <Box sx={{ maxWidth: 500, mx: 'auto', mt: 4 }}>
+      <Box
+        sx={{
+          maxWidth: 500,
+          mx: 'auto',
+          mt: 1,
+        }}
+      >
+        <Header />
         <AddTodo addTodo={addTodo} />
         <SortTodos todoList={todos} onSort={sortTodos} />
         <TodoList
