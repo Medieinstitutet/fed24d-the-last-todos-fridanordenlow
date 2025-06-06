@@ -1,6 +1,7 @@
+import { Box, Typography } from '@mui/material';
+
 import { Todo } from '../models/Todo';
 import { TodoItem } from './TodoItem';
-import { Box, Typography } from '@mui/material';
 
 type TodoListProps = {
   todoList: Todo[];

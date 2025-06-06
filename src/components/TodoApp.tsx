@@ -1,13 +1,17 @@
 import { useState } from 'react';
+
+import { Box, Typography } from '@mui/material';
+
 import { Todo } from '../models/Todo';
+
 import { TodoList } from './TodoList';
 import { AddTodo } from './AddTodo';
+import { SortTodos } from './SortTodos';
+
 import {
   loadFromLocalStorage,
   saveToLocalStorage,
 } from '../utils/localStorage';
-import { Box, Typography } from '@mui/material';
-import { SortTodos } from './SortTodos';
 
 export const TodoApp = () => {
   // const saveToLocalStorage = (todos: Todo[]) => {

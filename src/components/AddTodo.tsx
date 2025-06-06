@@ -1,6 +1,8 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
-import { Todo } from '../models/Todo';
+
 import { Box, Button, Paper, TextField, Typography } from '@mui/material';
+
+import { Todo } from '../models/Todo';
 
 type AddTodoProps = {
   addTodo: (todo: Todo) => void;

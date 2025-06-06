@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   Box,
   FormControl,
@@ -6,7 +8,7 @@ import {
   Select,
   type SelectChangeEvent,
 } from '@mui/material';
-import { useState } from 'react';
+
 import type { Todo } from '../models/Todo';
 
 type SortTodosProps = {
