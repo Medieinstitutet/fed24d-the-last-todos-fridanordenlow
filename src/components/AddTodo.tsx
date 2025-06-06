@@ -49,7 +49,7 @@ export const AddTodo = ({ addTodo }: AddTodoProps) => {
           error={!!error}
           helperText={error}
         ></TextField>
-        <Button type="submit" variant="outlined">
+        <Button type="submit" variant="contained">
           Add
         </Button>
       </Box>

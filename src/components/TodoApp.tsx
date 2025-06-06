@@ -62,7 +62,7 @@ export const TodoApp = () => {
 
   return (
     <>
-      <Typography variant="h3">The Last Todos To Do</Typography>
+      <Typography variant="h2">The Last Todos To Do</Typography>
       <Box sx={{ maxWidth: 500, mx: 'auto', mt: 4 }}>
         <AddTodo addTodo={addTodo} />
         <SortTodos todoList={todos} onSort={sortTodos} />

@@ -78,7 +78,7 @@ export const TodoItem = ({ todoItem, onDelete, onToggle }: TodoItemProps) => {
         </Box>
         <Button
           onClick={() => onDelete(todoItem.id)}
-          variant="outlined"
+          variant="contained"
           color="secondary"
         >
           Delete
